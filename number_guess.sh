@@ -1,6 +1,6 @@
 #!/bin/bash
 PSQL="psql -X --username=freecodecamp --dbname=postgres --tuples-only  -c"
-NUMBER_TO_GUESS=$(( $RANDOM % 1000 +1 ))
+NUMBER_TO_GUESS=$(( $RANDOM % 10 +1 ))
 GUESSES=0
 
 GAME(){
@@ -42,10 +42,10 @@ INCREASE_NUMBER=$($PSQL "UPDATE history SET number_played=$(( $NUMBER+1 )) WHERE
 done
 fi
 
-echo "Guess te secret number between 1 and 1000:"
+echo "Guess the secret number between 1 and 1000:"
 
 GAME
-
+echo "You guessed it in $GUESSES tries. The secret number was $NUMBER_TO_GUESS. Nice job!"
 if [[ -z $BEST ]]
 then 
 UPDATE_BEST=$($PSQL "UPDATE history SET best_game=$GUESSES WHERE user_id=$USER_ID")
