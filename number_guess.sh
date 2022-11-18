@@ -1,6 +1,6 @@
 #!/bin/bash
 PSQL="psql -X --username=freecodecamp --dbname=postgres --tuples-only  -c"
-NUMBER_TO_GUESS=$(( $RANDOM % 10 +1 ))
+NUMBER_TO_GUESS=$(( $RANDOM % 1000 +1 ))
 GUESSES=0
 
 GAME(){
